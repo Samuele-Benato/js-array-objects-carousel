@@ -26,18 +26,35 @@ const images = [
   },
 ];
 
-const items = document.getElementById("item");
-const next = document.getElementById("go-next");
-const prev = document.getElementById("go-pre");
+let slideIndex = 1;
+showSlides(slideIndex);
 
-let index = 0;
+// Next/previous controls
+function plusSlides(n) {
+  showSlides((slideIndex += n));
+}
 
-next.addEventListener("click", function () {
-  document.querySelector(".item.active").classList.remove("active");
-  if (index < items.lenght) {
-    index++;
-  } else {
-    index = 0;
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides((slideIndex = n));
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+
+  if (n > slides.length) {
+    slideIndex = 1;
   }
-  items[index].classList.add("active");
-});
+  if (n < 1) {
+    slideIndex = slides.length;
+  }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+}
