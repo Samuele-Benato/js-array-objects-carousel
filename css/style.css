@@ -1,0 +1,17 @@
+.item {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+img {
+  width: 100%;
+}
+
+.img_container {
+  width: 70%;
+
+  margin: 0 auto;
+}
