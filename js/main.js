@@ -26,35 +26,58 @@ const images = [
   },
 ];
 
-let slideIndex = 1;
-showSlides(slideIndex);
+const slidesContainer = document.getElementById("slide-container");
+const prevButton = document.getElementById("go-prev");
+const nextButton = document.getElementById("go-next");
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides((slideIndex += n));
+let activeSlide = 0;
+
+let slidesHTML = "";
+
+for (let i = 0; i < slidesHTML.length; i++) {
+  const imagesUrl = images.image;
+
+  console.log(imagesUrl);
+
+  let active = i == activeSlide ? "active" : "";
+
+  slidesHTML += `
+  <div class = 'slide ${active}'>
+    <img src= '${imagesUrl}' alt = '' />
+  </div>`;
+  console.log(slidesHTML);
 }
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides((slideIndex = n));
-}
+slidesContainer.innerHTML = slidesHTML;
 
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
+nextButton.addEventListener("click", function () {
+  const allSlidesEl = document.querySelectorAll(".slide");
 
-  if (n > slides.length) {
-    slideIndex = 1;
+  const activeSlideEl = allSlidesEl[activeSlide];
+  activeSlideEl.classList.toggle("active");
+
+  activeSlide++;
+
+  if (activeSlide >= allSlidesEl.length) {
+    activeSlide = 0;
   }
-  if (n < 1) {
-    slideIndex = slides.length;
+
+  const newActiveSlide = allSlidesEl[activeSlide];
+  newActiveSlide, this.classList.toggle("active");
+});
+
+prevButton.addEventListener("click", function () {
+  const allSlidesEl = document.querySelectorAll(".slide");
+
+  const activeSlideEl = allSlidesEl[activeSlide];
+  activeSlideEl.classList.toggle("active");
+
+  activeSlide--;
+
+  if (activeSlide < 0) {
+    activeSlide = allSlidesEl.length - 1;
   }
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
-}
+
+  const newActiveSlide = allSlidesEl[activeSlide];
+  newActiveSlide, this.classList.toggle("active");
+});
