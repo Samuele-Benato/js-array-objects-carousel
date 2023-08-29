@@ -45,10 +45,13 @@ for (let i = 0; i < images.length; i++) {
 
   slidesHTML += `
   <div class = 'slide ${active}'>
-    <img src= '${imagesUrl}' alt = '' />
+    <div class = 'image-container'>
+      <img src= '${imagesUrl}' alt = '' />
+    </div>
+    
     <div class = 'caption'>
-    <h1> ${titleImage} </h1>
-    <p> ${textImage} </p>
+      <h1> ${titleImage} </h1>
+      <p> ${textImage} </p>
     </div>
     
   </div>`;
