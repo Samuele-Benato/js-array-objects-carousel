@@ -34,8 +34,10 @@ let activeSlide = 0;
 
 let slidesHTML = "";
 
-for (let i = 0; i < slidesHTML.length; i++) {
-  const imagesUrl = images.image;
+for (let i = 0; i < images.length; i++) {
+  const imagesUrl = images[i].image;
+  const titleImage = images[i].title;
+  const textImage = images[i].text;
 
   console.log(imagesUrl);
 
@@ -44,6 +46,11 @@ for (let i = 0; i < slidesHTML.length; i++) {
   slidesHTML += `
   <div class = 'slide ${active}'>
     <img src= '${imagesUrl}' alt = '' />
+    <div class = 'caption'>
+    <h1> ${titleImage} </h1>
+    <p> ${textImage} </p>
+    </div>
+    
   </div>`;
   console.log(slidesHTML);
 }
@@ -63,7 +70,7 @@ nextButton.addEventListener("click", function () {
   }
 
   const newActiveSlide = allSlidesEl[activeSlide];
-  newActiveSlide, this.classList.toggle("active");
+  newActiveSlide.classList.toggle("active");
 });
 
 prevButton.addEventListener("click", function () {
@@ -79,5 +86,5 @@ prevButton.addEventListener("click", function () {
   }
 
   const newActiveSlide = allSlidesEl[activeSlide];
-  newActiveSlide, this.classList.toggle("active");
+  newActiveSlide.classList.toggle("active");
 });
